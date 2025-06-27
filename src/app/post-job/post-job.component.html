@@ -1,0 +1,60 @@
+<header class="navbar">
+  <div class="logo">
+    <img src="../../assets/images/bajajLogo.svg" alt="Company Logo" />
+    <span>Bajaj Technology Services</span>
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Jobs</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<!-- Main Form Section -->
+<main class="form-container">
+  <h2>Create a Job Description</h2>
+
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
+    <!-- Basic Fields -->
+    <div class="form-grid">
+      <div><label>Job ID</label><input type="text" formControlName="jobId" /></div>
+      <div><label>Job Title</label><input type="text" formControlName="jobTitle" /></div>
+      <div><label>Location</label><input type="text" formControlName="jobLocation" /></div>
+      <div class="experience-inline">
+        <label>Experience:</label>
+        <input type="number" formControlName="experienceMin" min="0" /> 
+        <span>to</span>
+        <input type="number" formControlName="experienceMax" min="0" /> 
+        <span>years</span>
+      </div>
+      
+    </div>
+
+    <div>
+      <label>Job Description</label>
+      <textarea formControlName="jobDescription" rows="4"></textarea>
+    </div>
+
+    <!-- Skills Section -->
+    <h3>Skills Required</h3>
+    <div formArrayName="skills">
+      <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i" class="skill-group">
+        <input type="text" formControlName="skill" placeholder="Skill name" />
+        <select formControlName="experienceLevel">
+          <option value="">Select level</option>
+          <option *ngFor="let level of experienceLevels" [value]="level">{{ level }}</option>
+        </select>
+        <button type="button" (click)="removeSkill(i)" *ngIf="skills.length > 1">Remove</button>
+      </div>
+      <button type="button" (click)="addSkill()">+ Add Skill</button>
+    </div>
+
+    <button type="submit" [disabled]="jobForm.invalid" class="submit-btn">Create</button>
+  </form>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 Company Name. All rights reserved.</p>
+</footer>
+

@@ -1,0 +1,87 @@
+
+<main class="main">
+<div class="home-container">
+    
+   
+  <div class="job-container">
+    
+    <div class="upload-section">
+      <div class="upload-title">
+        <input class="radio" type="radio" id="newJob" name="jobType" value="newJob">
+        <label for="newJob" class="upload-jd-title">Create New Job</label>
+      </div>
+
+      <div class="upload-title">
+        <input class="radio" type="radio" id="newJob" name="jobType" value="newJob">
+        <label for="file-input" class="upload-jd-title">Upload Job Description(JD)</label>
+
+      </div>
+      <div class="upload-document">
+        <label for="file-input" class="upload-label">
+          <span class="upload-text">Upload Document</span>
+
+          <div class="icon-container">
+            <!-- <div class="attachment-icon">
+              <img class="remove-img" src="../../assets/images/attachment-icon.svg" alt="remove logo" />
+                
+            </div> -->
+            <div class="attachment-icon">
+              <img class="remove-img" src="../../assets/images/attachment-icon2.svg" alt="remove logo" />
+                
+            </div>
+          </div>
+        </label>
+
+
+          <input
+            id="file-input"
+            type="file"
+            accept=".pdf,.doc,.docx"
+            (change)="onFileChange($event, 'jobDescription')"
+            hidden />
+        
+   
+
+        
+      </div>
+      <div *ngIf="!jobDescriptionFile" class="guidelines">
+          <div>Maximum file size: 3 MB</div>
+          <p>Upload format: PDF/Docx/Txt</p>
+      </div>
+
+      <!-- Display selected files -->
+      <div *ngIf="jobDescriptionFile" class="file-list">
+        <div class="resume-uploaded">
+        <div>JD uploaded successfully</div>
+        <button class="remove-btn">
+          <img class="remove-img" src="../../assets/images/Vector.png" alt="remove logo" />
+        </button>
+        </div> 
+    </div>
+     
+      <div class="btn-container">
+        <button [disabled]="!selectedJobId && !jobDescriptionFile" class="proceed" (click)="proceed()">
+          Proceed
+        </button>
+      </div> 
+    </div>
+  </div>
+
+
+  <div class="hiring-logo">
+    <img class="remove-img" src="../../assets/images/hiring-logo.svg" alt="hiring logo" />
+    <div class="title">
+      <h3>Simplifying Hiring,</h3>
+      <h4>One Click at a Time</h4>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<!-- <app-footer></app-footer> -->
+
+<div class="fullscreen-loader" *ngIf="isLoading">
+  <div class="spinner"></div>
+</div>
+ 

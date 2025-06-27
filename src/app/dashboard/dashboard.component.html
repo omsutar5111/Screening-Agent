@@ -1,0 +1,107 @@
+
+<main class="main">
+  <div class="container">
+    <div class="job-container">
+    <div class="left-right">
+      <div class="left">
+
+        <div class="section">
+          <span class="job-details">Job Details</span>
+        </div>
+
+        <div class="section">
+          <span class="label">Role : </span>{{ role }}
+        </div>
+
+        <div class="section">
+          <span class="label">Experience Range : </span>{{ experienceRange }}
+        </div>
+
+        <div class="section">
+          <span class="label">Primary Skills</span>
+          <div class="skills">
+            <span *ngFor="let skill of primarySkills">{{ skill }}</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="label">Good - to - Have Skills</span>
+          <div class="matching-skills">
+            <span *ngFor="let skill of goodToHaveSkills">{{ skill }}</span>
+          </div>
+        </div>
+          
+      </div>
+      
+      <div class="right">
+        <div class="upload-section">
+          <!-- Heading like previous section -->
+          <label for="resumeUpload" class="resume-upload">Resume Upload</label>
+        
+          <!-- Stylized file upload -->
+          <div class="upload-document">
+        <label for="resumeUpload" class="upload-label">
+          <span class="upload-text">Upload Resume</span>
+
+          <div class="icon-container">
+            <div class="attachment-icon">
+              <!-- First SVG -->
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.49521 7.01163C8.06308 7.01163 7.75581 7.21958 7.75581 7.52601V11.6956C7.75581 11.9583 8.06311 12.2209 8.49521 12.2209C8.90811 12.2209 9.24419 11.9583 9.24419 11.6956V7.52601C9.24419 7.21958 8.90811 7.01163 8.49521 7.01163Z" fill="#FF6700"/>
+                <path d="M7.75581 5.51805C7.75581 5.12254 8.08453 4.77907 8.50455 4.77907C8.91544 4.77907 9.24419 5.12258 9.24419 5.51805C9.24419 5.91355 8.91547 6.26744 8.50455 6.26744C8.08453 6.26744 7.75581 5.91355 7.75581 5.51805Z" fill="#FF6700"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 8.5C0.5 4.08172 4.08172 0.5 8.5 0.5C12.9183 0.5 16.5 4.08172 16.5 8.5C16.5 12.9183 12.9183 16.5 8.5 16.5C4.08172 16.5 0.5 12.9183 0.5 8.5ZM15.3837 8.5C15.3837 4.69823 12.3018 1.61628 8.5 1.61628C4.69823 1.61628 1.61628 4.69823 1.61628 8.5C1.61628 12.3018 4.69823 15.3837 8.5 15.3837C12.3018 15.3837 15.3837 12.3018 15.3837 8.5Z" fill="#FF6700"/>
+                <path d="M8.49521 7.01163C8.06308 7.01163 7.75581 7.21958 7.75581 7.52601V11.6956C7.75581 11.9583 8.06311 12.2209 8.49521 12.2209C8.90811 12.2209 9.24419 11.9583 9.24419 11.6956V7.52601C9.24419 7.21958 8.90811 7.01163 8.49521 7.01163Z" fill="#FF6700"/>
+                <path d="M7.75581 5.51805C7.75581 5.12254 8.08453 4.77907 8.50455 4.77907C8.91544 4.77907 9.24419 5.12258 9.24419 5.51805C9.24419 5.91355 8.91547 6.26744 8.50455 6.26744C8.08453 6.26744 7.75581 5.91355 7.75581 5.51805Z" fill="#FF6700"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 8.5C0.5 4.08172 4.08172 0.5 8.5 0.5C12.9183 0.5 16.5 4.08172 16.5 8.5C16.5 12.9183 12.9183 16.5 8.5 16.5C4.08172 16.5 0.5 12.9183 0.5 8.5ZM15.3837 8.5C15.3837 4.69823 12.3018 1.61628 8.5 1.61628C4.69823 1.61628 1.61628 4.69823 1.61628 8.5C1.61628 12.3018 4.69823 15.3837 8.5 15.3837C12.3018 15.3837 15.3837 12.3018 15.3837 8.5Z" fill="#FF6700"/>
+              </svg>
+                
+            </div>
+            <div class="attachment-icon">
+              <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_112_6774)">
+                <path d="M19.6251 8.50032C19.4689 8.34409 19.2569 8.25633 19.036 8.25633C18.815 8.25633 18.6031 8.34409 18.4468 8.50032L9.37014 17.6161C8.98323 18.0031 8.5239 18.3101 8.01836 18.5195C7.51282 18.729 6.97098 18.8368 6.42377 18.8368C5.31863 18.8369 4.25873 18.398 3.47722 17.6166C2.69572 16.8352 2.25663 15.7753 2.25655 14.6702C2.25648 13.5651 2.69541 12.5052 3.47681 11.7237L12.2676 2.89698C12.7377 2.43439 13.3715 2.17629 14.031 2.1789C14.6906 2.18151 15.3223 2.44461 15.7887 2.9109C16.2551 3.3772 16.5184 4.0089 16.5211 4.66841C16.5239 5.32792 16.266 5.9618 15.8035 6.43198L7.01264 15.2586C6.8541 15.4105 6.64303 15.4953 6.42347 15.4953C6.20392 15.4953 5.99285 15.4105 5.83431 15.2586C5.67808 15.1024 5.59032 14.8905 5.59032 14.6695C5.59032 14.4485 5.67808 14.2366 5.83431 14.0803L13.661 6.21782C13.8128 6.06065 13.8968 5.85015 13.8949 5.63165C13.893 5.41315 13.8053 5.20414 13.6508 5.04963C13.4963 4.89513 13.2873 4.80749 13.0688 4.80559C12.8503 4.80369 12.6398 4.88769 12.4826 5.03948L4.65597 12.902C4.42378 13.1341 4.2396 13.4098 4.11393 13.7131C3.98827 14.0164 3.92359 14.3416 3.92359 14.6699C3.92359 14.9982 3.98827 15.3234 4.11393 15.6267C4.2396 15.93 4.42378 16.2057 4.65597 16.4378C5.13232 16.8924 5.76546 17.146 6.42389 17.146C7.08232 17.146 7.71546 16.8924 8.19181 16.4378L16.9818 7.61032C17.7468 6.82557 18.1718 5.77103 18.1648 4.67513C18.1578 3.57923 17.7193 2.53022 16.9443 1.75534C16.1693 0.980457 15.1202 0.542105 14.0243 0.535238C12.9284 0.528372 11.8739 0.953543 11.0893 1.71865L2.29847 10.5453C1.20446 11.6393 0.589844 13.1231 0.589844 14.6703C0.589844 16.2175 1.20446 17.7013 2.29847 18.7953C3.39249 19.8893 4.8763 20.5039 6.42347 20.5039C7.97065 20.5039 9.45446 19.8893 10.5485 18.7953L19.6251 9.68198C19.703 9.60454 19.7648 9.51248 19.8069 9.41108C19.8491 9.30969 19.8708 9.20096 19.8708 9.09115C19.8708 8.98134 19.8491 8.87261 19.8069 8.77122C19.7648 8.66982 19.703 8.57776 19.6251 8.50032Z" fill="#1778EB"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_112_6774">
+                <rect width="20" height="20" fill="white" transform="translate(0.5 0.5)"/>
+                </clipPath>
+                </defs>
+              </svg>    
+            </div>
+          </div>
+        </label>
+        <input id="resumeUpload" type="file" accept=".pdf,.doc,.docx" multiple hidden (change)="onFileChange($event)"/>
+      </div>
+      <div class="info" *ngIf="!uploadedFiles.length">
+          <div>Maximum file size: 3 MB</div>
+          <p>Upload format: PDF/JPG/JPEG/PNG/BMP<br>
+          You can upload multiple files at a time</p>
+      </div>
+          
+          
+          <!-- Display selected files -->
+          <div *ngIf="uploadedFiles.length" class="file-list">
+              <div *ngFor="let file of uploadedFiles; let i = index" class="resume-uploaded">
+              <div>Resume uploaded successfully</div>
+              <button class="remove-btn" (click)="removeFile(i)">
+                <img class="remove-img" src="../../assets/images/Vector.png" alt="remove logo" />
+              </button>
+              </div> 
+          </div>
+
+          
+        
+          <!-- <button [disabled]="!uploadedFiles.length || isUploading" (click)="uploadResumes()">
+          {{ isUploading ? 'Uploading...' : 'Upload' }}
+          </button> -->
+        </div>
+        <button class = "proceed-btn" (click)="uploadResumes()">
+          Proceed
+        </button>
+      </div>
+    </div>  </div>
+
+
+<div class="fullscreen-loader" *ngIf="isUploading">
+  <div class="spinner"></div>
+</div>

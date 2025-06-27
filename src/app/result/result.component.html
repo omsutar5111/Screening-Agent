@@ -1,0 +1,152 @@
+
+<main class="main">
+<div class="container">
+    <div class="controls-bar">
+      <div class="homepage-section">
+        <div class="homepage-home">Home</div>
+        <img class = "homepage-img" src="../../assets/images/Icon.svg" alt="icon logo"/>
+        <div class="homepage-report">Report Page</div>
+      </div>
+
+      <div class="sort-download-wrapper">
+        <button class="download-report" (click)="downloadReport()">
+            <img src="../../assets/images/Download-button.png" alt="Download csv logo"/>
+            <div>Download CSV Report</div>
+        </button>
+
+        <div class="sort-by-dropdown">
+          <button (click)="toggleDropdown()" class="sort-button">
+            Sort by
+            
+            <span [class.rotate]="dropdownOpen">
+              <img src="../../assets/images/Path 4.svg" alt="Download csv logo"/>
+            </span> 
+          </button>
+
+          <ul *ngIf="dropdownOpen" class="dropdown-menu">
+            <li (click)="sortResults('Match')">Match</li>
+            <li (click)="sortResults('Experience')">Experience</li>
+            <li (click)="sortResults('Status')">Status</li>
+          </ul>
+        </div>
+
+        <!-- <div class="sort-bar">
+            <label for="sortSelect" class="sort-label">Sort by:</label>
+            <select [(ngModel)]="sortBy" (change)="sortResults()">
+              <option disabled selected>Select</option>
+              <option value="match">Match %</option>
+              <option value="experience">Experience</option>
+              <option value="status">Hire Status</option>
+            </select>
+        </div> -->
+      </div>
+    </div>
+      
+    <div class="results-container">
+      <div *ngFor="let result of results; let i = index" [attr.id]="'card-' + i" class="card">
+        
+
+        <div class="left-right">
+          <div class="left">
+            <div class="candidate-name">
+              {{ result.name }}
+            </div>
+
+            <div class="section" *ngIf="result.job_role">
+              <span class="label">Job Role</span>
+              <div>{{ result.job_role }}</div>
+            </div>
+
+            <div class="section" *ngIf="result.preferred_location">
+              <span class="label">Preferred Location</span>
+              <div>{{ result.preferred_location }}</div>
+            </div>
+
+            <div class="section">
+              <span class="label">Summary</span>
+              <ul class="summary">
+                <li *ngFor="let line of formatSummarywithBulletPoints(result.summery)">{{ line }}</li>
+              </ul>
+            </div>
+      
+
+            <div class="section">
+              <span class="label">Skills from Resume</span>
+              <div class="skills">
+                <span *ngFor="let skill of result.skills">{{ skill }}</span>
+              </div>
+            </div>
+  
+            <div class="section">
+              <span class="label">Matching Skills & Technologies</span>
+              <div class="matching-skills">
+                <span *ngFor="let match of result.matchingSkills">{{ match }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="profile-hiring">
+              <div class="donut-chart-container">
+                <canvas baseChart
+                        [type]="'doughnut'"
+                        [data]="getChartData(result.matchPercentage,result.hireStatus)"
+                        [options]="getChartOptions()"
+                        [plugins]="[getCenterTextPlugin(result.matchPercentage)]">
+                </canvas>
+              </div>
+
+              <div class="hiring">
+                <div>Hiring Status</div>
+                <span [ngClass]="getStatusClass(result.hireStatus)">
+                  {{ result.hireStatus }}
+                </span>
+              </div>
+            </div>
+    
+            <div class="experience">
+
+              <div class="section">
+                <span class="label"> Experience:</span><br>
+                <span class="value">{{ result.experience }} years</span>
+              </div>
+
+              <div class="section">
+                <span class="label"> Relevent Experience:</span><br>
+                <span class="value">{{ result.relevant_experience }} years</span>
+              </div>
+            </div>
+
+            <div class="primary-skill-score">
+              <div class="label">Primary Skills Experience Score</div>
+              <div class="skill-bar" *ngFor="let skill of objectKeys(result.primarySkillsScore).slice(0, 3)">
+                <div class="skill-label">
+                  <span>{{ skill }}</span>
+                  <span>{{ result.primarySkillsScore[skill] }}/10 </span>
+                </div>
+                <div class="bar">
+                  <div class="fill"
+                    [style.width.%]="(result.primarySkillsScore[skill] / 10) * 100"></div>
+                </div>
+              </div>
+            </div>
+
+            <button class="download-profile-report" (click)="downloadReport()">
+              <div class="download-button">
+                <img src="../../assets/images/Download-button.png" alt="Download csv logo" />
+                <p>Download Report</p>
+              </div>
+            </button>
+          </div>  
+        
+          
+        </div>
+        <footer class="result-footer">
+          <img class = "img-footer" src="../../assets/images/bajaj-footer.png" alt="Bajaj footer logo"/>
+          <div class="text-footer">BAJAJ TECHNOLOGY SERVICES</div>
+        </footer>
+        
+      </div>
+    </div>
+    </div>
+  </main>

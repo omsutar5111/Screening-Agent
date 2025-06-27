@@ -1,0 +1,67 @@
+<main class="main">
+  <div class="container">
+    <div class="left-right">
+      <div class="left">
+        <div class="login-box">
+          <div class="login-heading" id="content">Login</div>
+
+          <div class="login-form">
+            <form (ngSubmit)="login()" >
+              <div class="username">
+                <div class="label">Username</div>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Enter username"
+                  [(ngModel)]="username"
+                  required
+                  >
+      
+              </div>
+              <div class="password">
+                <div class="label">Password</div>
+                <div class="password-group">
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    id="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                  />
+                  <span class="toggle-password" (click)="togglePasswordVisibility()">
+                    <i
+                      class="{{ showPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"
+                      aria-hidden="true"
+                    ></i>
+                    <!-- <img aria-hidden="true" src="../../assets/images/password-eye.svg" alt="password eye" /> -->
+                  </span>
+                </div>
+                <div class="forgot-password">Forgot Password?</div>
+                <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+                
+              </div>
+
+              <div class="btn-container">
+                <button type="submit">
+                  LOGIN
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="hiring-logo">
+          <img class="remove-img" src="../../assets/images/hiring-logo.svg" alt="hiring logo" />
+          <div class="title">
+            <h3>Simplifying Hiring,</h3>
+            <h4>One Click at a Time</h4>
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+
+
